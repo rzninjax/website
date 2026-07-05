@@ -4,30 +4,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 const WhoWeAre = ({ onServiceClick }) => {
     const services = [
         {
-            title: "01. Educación: Plataforma Lean Makers",
-            shortTitle: "Educación",
-            category: "Educación Superior y Corporativa",
-            description: "Plataformas y metodologías para formar talento en entornos reales, medibles y escalables.",
+            title: "01. IA Soberana: Modelos Locales y Privacidad Total",
+            shortTitle: "IA soberana",
+            category: "Inteligencia Artificial",
+            description: "Las nubes públicas exponen tu data. Tus modelos corren en tu infraestructura: tu información nunca sale a modelos de terceros.",
             details: [
-                { label: "Cumplimiento Normativo (Ley 21.091)", content: "Nuestra plataforma Lean Makers está diseñada específicamente para satisfacer los estándares de la Ley de Educación Superior, facilitando procesos de acreditación institucional." },
-                { label: "Métricas de Calidad", content: "Generamos reportería avanzada y trazabilidad total del aprendizaje, permitiendo auditorías de calidad precisas y transparentes." },
-                { label: "Metodología de \"Hacer\"", content: "Formamos talento en entornos reales, escalables y medibles que garantizan que el conocimiento se traduzca en ejecución técnica inmediata." }
-            ],
-            link: { label: "www.lean-makers.com", url: "https://www.lean-makers.com" }
-        },
-        {
-            title: "02. Sistemas: Arquitecturas de Rendimiento Crítico",
-            shortTitle: "Sistemas",
-            category: "Sistemas Críticos",
-            description: "Arquitecturas optimizadas para rendimiento crítico.",
-            details: [
-                { label: "Disponibilidad Absoluta", content: "Diseñamos sistemas capaces de procesar altos volúmenes de transacciones sin degradar la experiencia del usuario." },
-                { label: "Escalabilidad Inteligente", content: "Arquitecturas que crecen orgánicamente con el negocio, optimizando el uso de recursos y reduciendo costos operativos." }
+                { label: "Arquitecturas LLM y Bases de Datos Vectoriales", content: "Implementamos modelos de lenguaje avanzados y búsqueda semántica (RAG) que comprenden el contexto de tu negocio sin exponer tu data." },
+                { label: "Privacidad por Diseño", content: "Procesamos la información en entornos controlados (On-premise o Cloud privada), evitando que tus datos sensibles se filtren a servidores externos o modelos públicos." },
+                { label: "IA de Ejecución Real", content: "Modelos neuronales optimizados para resolver problemas operativos específicos con alta precisión y seguridad de datos." }
             ]
         },
         {
-            title: "03. Seguridad: Concientización y Resiliencia (Ley 21.663)",
-            shortTitle: "Seguridad",
+            title: "02. Ciberseguridad: Concientización y Resiliencia (Ley 21.663)",
+            shortTitle: "Ciberseguridad",
             category: "Ciberseguridad y Resiliencia",
             description: "Ciberseguridad integrada desde la concepción.",
             details: [
@@ -37,22 +26,25 @@ const WhoWeAre = ({ onServiceClick }) => {
             ]
         },
         {
-            title: "04. IA Aplicada: Modelos Locales y Privacidad Total",
-            shortTitle: "IA Aplicada",
-            category: "Inteligencia Artificial",
-            description: "Modelos neuronales diseñados para la ejecución real.",
+            title: "03. Formación: Plataforma Lean Maker",
+            shortTitle: "Formación",
+            category: "Vinculación, Talento y Capacitación",
+            description: "Plataforma Lean Maker: conectamos los desafíos reales de empresas con el talento de la educación superior, con trazabilidad total de la vinculación. Sumamos capacitación y asesoría en tecnología.",
             details: [
-                { label: "Arquitecturas LLM y Bases de Datos Vectoriales", content: "Implementamos modelos de lenguaje avanzados y búsqueda semántica que comprenden el contexto de tu negocio." },
-                { label: "Privacidad por Diseño", content: "Procesamos la información en entornos controlados (On-premise o Cloud privada), evitando que tus datos sensibles se filtren a servidores externos o modelos públicos." },
-                { label: "IA de Ejecución Real", content: "Modelos neuronales optimizados para resolver problemas operativos específicos con alta precisión y seguridad de datos." }
-            ]
+                { label: "Vinculación Trazable (Ley 21.091)", content: "Nuestra plataforma Lean Maker registra la vinculación bidireccional entre empresas e instituciones, generando la trazabilidad que exige la acreditación de la Educación Superior." },
+                { label: "Métricas de Calidad", content: "Generamos reportería avanzada y trazabilidad total del aprendizaje, permitiendo auditorías de calidad precisas y transparentes." },
+                { label: "Capacitación y Asesoría", content: "Formamos y acompañamos a tus equipos en tecnologías específicas mediante capacitación y asesoría en entornos reales, medibles y escalables." }
+            ],
+            link: { label: "lm.itierx.com", url: "https://lm.itierx.com" }
         },
         {
-            title: "05. Infraestructura: On-premise / Cloud Híbrida",
-            shortTitle: "Infraestructura On-premise / Cloud",
-            category: "Gestión y Despliegue",
-            description: "Diseño y despliegue de infraestructuras soberanas y elásticas.",
+            title: "04. Infraestructura y Sistemas: Rendimiento Crítico y Soberanía",
+            shortTitle: "Infraestructura y sistemas",
+            category: "Sistemas Críticos e Infraestructura",
+            description: "Arquitecturas de alto rendimiento desplegadas on-premise o en nube híbrida, con soberanía de datos y continuidad operativa.",
             details: [
+                { label: "Disponibilidad Absoluta", content: "Diseñamos sistemas capaces de procesar altos volúmenes de transacciones sin degradar la experiencia del usuario." },
+                { label: "Escalabilidad Inteligente", content: "Arquitecturas que crecen orgánicamente con el negocio, optimizando el uso de recursos y reduciendo costos operativos." },
                 { label: "Soberanía de Datos", content: "Implementamos infraestructuras On-premise para el control total de la información sensible, garantizando la privacidad exigida por sectores críticos." },
                 { label: "Nube Híbrida y Elástica", content: "Combinamos la seguridad de lo propio con la escalabilidad de la nube, permitiendo una gestión de recursos eficiente y adaptativa al crecimiento del negocio." },
                 { label: "Continuidad Operativa", content: "Diseñamos arquitecturas con redundancia y alta disponibilidad para asegurar que el negocio nunca se detenga." }

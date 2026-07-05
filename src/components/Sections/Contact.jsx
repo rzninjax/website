@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Youtube, Instagram, Facebook } from 'lucide-react';
 
-const Contact = ({ onContactClick }) => {
+const Contact = ({ onContactClick, onAgendaClick }) => {
     return (
         <section id="contacto" className="relative pt-32 pb-16 px-8 md:px-24 bg-black overflow-hidden">
             {/* City Background Placeholder Effect */}
@@ -32,17 +32,30 @@ const Contact = ({ onContactClick }) => {
                         Diseñamos soluciones que escalan con tu visión.
                     </p>
 
-                    <motion.button
-                        onClick={onContactClick}
-                        whileHover={{
-                            scale: 1.05,
-                            boxShadow: "0 0 50px rgba(123, 97, 255, 0.4)",
-                            backgroundColor: "#8B73FF"
-                        }}
-                        className="bg-purple-vibrant text-white text-sm font-mono tracking-widest uppercase px-16 py-6 rounded-tr-3xl rounded-bl-3xl transition-all"
-                    >
-                        Comenzar
-                    </motion.button>
+                    <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+                        <motion.button
+                            onClick={onAgendaClick}
+                            whileHover={{
+                                scale: 1.05,
+                                boxShadow: "0 0 50px rgba(123, 97, 255, 0.4)",
+                                backgroundColor: "#8B73FF"
+                            }}
+                            className="bg-purple-vibrant text-white text-sm font-mono tracking-widest uppercase px-16 py-6 rounded-tr-3xl rounded-bl-3xl transition-all shadow-[0_4px_14px_0_rgba(123,97,255,0.39)]"
+                        >
+                            Agenda una asesoría
+                        </motion.button>
+                        <motion.button
+                            onClick={onContactClick}
+                            whileHover={{
+                                scale: 1.05,
+                                backgroundColor: "rgba(255,255,255,0.1)",
+                                borderColor: "rgba(123, 97, 255, 0.5)"
+                            }}
+                            className="border border-white/20 text-white text-sm font-mono tracking-widest uppercase px-16 py-6 rounded-tr-3xl rounded-bl-3xl bg-transparent transition-all"
+                        >
+                            Escríbenos
+                        </motion.button>
+                    </div>
                 </motion.div>
 
                 {/* Footer info */}

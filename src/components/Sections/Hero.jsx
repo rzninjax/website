@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import heroVideo from '../../assets/Hero3.mp4';
 
-const Hero = ({ onFollowClick, onLearnMoreClick }) => {
+const Hero = ({ onAgendaClick, onLearnMoreClick }) => {
     return (
         <section id="home" className="relative min-h-screen w-full flex flex-col justify-center px-8 md:px-24 pt-28 pb-12 overflow-hidden">
             {/* Background Video/Image */}
@@ -28,28 +28,26 @@ const Hero = ({ onFollowClick, onLearnMoreClick }) => {
                     viewport={{ once: true }}
                 >
                     <h1 className="text-[clamp(1.8rem,10vw,3.2rem)] md:text-[clamp(3.5rem,8vh+2vw,6.5rem)] leading-[1.1] md:leading-[1.05] mb-4 md:mb-6">
-                        Transformamos <br />
-                        <span className="text-white/80">Complejidad</span> en <br />
-                        Rendimiento <span className="text-purple-vibrant">Real.</span>
+                        IA, ciberseguridad, <br />
+                        <span className="text-purple-vibrant">arquitectura</span> y sistemas.
                     </h1>
 
                     <p className="font-mono text-xs sm:text-sm md:text-base text-white/80 max-w-2xl leading-relaxed mb-8 md:mb-10">
-                        Diseñamos y operamos soluciones avanzadas en IA y ciberseguridad,
-                        ayudando a organizaciones a pasar de la incertidumbre a la ejecución
-                        real con impacto y escalabilidad.
+                        Implementamos IA soberana segura en tu propia infraestructura:
+                        tu data sensible nunca sale a servidores externos. Reforzamos tu ciberseguridad y desarrollamos sistemas escalables.
                     </p>
 
                     <div className="flex flex-wrap gap-4 md:gap-6">
                         <motion.button
-                            onClick={onFollowClick}
+                            onClick={onAgendaClick}
                             whileHover={{
                                 scale: 1.05,
                                 boxShadow: "0 0 30px rgba(123, 97, 255, 0.5)",
                                 backgroundColor: "#8B73FF"
                             }}
-                            className="bg-purple-vibrant px-8 md:px-12 py-4 md:py-5 rounded-tr-3xl rounded-bl-3xl font-mono text-xs md:text-sm tracking-widest uppercase transition-colors"
+                            className="bg-purple-vibrant px-8 md:px-12 py-4 md:py-5 rounded-tr-3xl rounded-bl-3xl font-mono text-xs md:text-sm tracking-widest uppercase transition-colors shadow-[0_4px_14px_0_rgba(123,97,255,0.39)]"
                         >
-                            Síguenos!
+                            Agenda una asesoría
                         </motion.button>
                         <motion.button
                             onClick={onLearnMoreClick}

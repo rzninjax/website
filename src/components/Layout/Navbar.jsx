@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 //import logo from '../../assets/itierx-logo.png';
 
-const Navbar = ({ onContactClick }) => {
+const Navbar = ({ onContactClick, onAgendaClick }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -41,13 +41,21 @@ const Navbar = ({ onContactClick }) => {
                     </div>
                 </div>
 
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-3 md:gap-4">
                     <motion.button
                         onClick={onContactClick}
+                        whileHover={{ scale: 1.05, borderColor: "rgba(123, 97, 255, 0.6)" }}
+                        className="hidden md:block border border-white/20 text-white text-[15px] font-mono tracking-widest uppercase px-5 py-3 rounded-tr-2xl rounded-bl-2xl hover:text-white transition-all"
+                    >
+                        hablemos!
+                    </motion.button>
+
+                    <motion.button
+                        onClick={onAgendaClick}
                         whileHover={{ scale: 1.05, boxShadow: "0 0 200px rgba(123, 97, 255, 0.4)" }}
                         className="hidden sm:block bg-purple-vibrant text-white text-[15px] font-mono tracking-widest uppercase px-6 py-3 rounded-tr-2xl rounded-bl-2xl hover:bg-purple-vibrant/90 transition-all shadow-[0_4px_14px_0_rgba(123,97,255,0.39)]"
                     >
-                        hablemos!
+                        Agenda una asesoría
                     </motion.button>
 
                     <button
@@ -87,9 +95,18 @@ const Navbar = ({ onContactClick }) => {
                             <button
                                 onClick={() => {
                                     setIsOpen(false);
-                                    onContactClick();
+                                    onAgendaClick();
                                 }}
                                 className="mt-8 bg-purple-vibrant text-white text-xs font-mono tracking-widest uppercase px-12 py-4 rounded-tr-2xl rounded-bl-2xl"
+                            >
+                                Agenda una asesoría
+                            </button>
+                            <button
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    onContactClick();
+                                }}
+                                className="border border-white/20 text-white text-xs font-mono tracking-widest uppercase px-12 py-4 rounded-tr-2xl rounded-bl-2xl"
                             >
                                 hablemos!
                             </button>

@@ -1,29 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { projects } from '../../data/projects';
 
-const projects = [
-    {
-        title: "Lean makers",
-        thumbnail: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
-        id: "project1",
-        vimeoId: "1171578568"
-    },
-    {
-        title: "Ciberseguridad Cuántica",
-        thumbnail: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop",
-        id: "project2"
-    },
-    {
-        title: "Sistemas Críticos AI",
-        thumbnail: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop",
-        id: "project3"
-    }
-];
+const pad = (n) => String(n).padStart(2, '0');
 
-const PortfolioModal = ({ isOpen, onClose }) => {
-    const [index, setIndex] = useState(0);
+const PortfolioModal = ({ isOpen, onClose, initialIndex = 0, onAgendaClick }) => {
+    const [index, setIndex] = useState(initialIndex);
     const [isPlaying, setIsPlaying] = useState(false);
+
+    // Abrir en el video seleccionado desde el carrusel de la sección
+    useEffect(() => {
+        if (isOpen) {
+            setIndex(initialIndex);
+            setIsPlaying(false);
+        }
+    }, [isOpen, initialIndex]);
 
     const next = () => {
         setIndex((prev) => (prev + 1) % projects.length);
@@ -83,49 +75,64 @@ const PortfolioModal = ({ isOpen, onClose }) => {
                                     transition={{ duration: 0.5 }}
                                     className="absolute inset-0 flex flex-col md:flex-row"
                                 >
-                                    <div className="flex-1 relative overflow-hidden group/item">
-                                        {isPlaying && projects[index].vimeoId ? (
-                                            <iframe
-                                                src={`https://player.vimeo.com/video/${projects[index].vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1`}
-                                                frameBorder="0"
-                                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                                                className="absolute inset-0 w-full h-full"
-                                                title={projects[index].title}
-                                            ></iframe>
-                                        ) : (
-                                            <>
-                                                <img
-                                                    src={projects[index].thumbnail}
-                                                    alt={projects[index].title}
-                                                    className="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-105"
+                                    <div className="flex-1 flex items-center justify-center p-6 md:p-10">
+                                        <div className="relative w-full max-w-[520px] aspect-video rounded-xl overflow-hidden border border-white/10 bg-black group/item">
+                                            {isPlaying && projects[index].vimeoId ? (
+                                                <iframe
+                                                    src={`https://player.vimeo.com/video/${projects[index].vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1${projects[index].loop ? '&loop=1' : ''}`}
+                                                    frameBorder="0"
+                                                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                                    className="absolute inset-0 w-full h-full"
+                                                    title={projects[index].title}
+                                                ></iframe>
+                                            ) : isPlaying && projects[index].videoSrc ? (
+                                                <video
+                                                    src={projects[index].videoSrc}
+                                                    poster={projects[index].thumbnail}
+                                                    controls
+                                                    autoPlay
+                                                    playsInline
+                                                    className="absolute inset-0 w-full h-full object-contain bg-black"
                                                 />
-                                                <div 
-                                                    className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer group"
-                                                    onClick={() => setIsPlaying(true)}
-                                                >
-                                                    <motion.div
-                                                        whileHover={{ scale: 1.1 }}
-                                                        className="w-16 h-16 rounded-full bg-purple-vibrant/20 border border-purple-vibrant flex items-center justify-center backdrop-blur-sm shadow-[0_0_30px_rgba(123,97,255,0.4)]"
-                                                    >
-                                                        <Play className="fill-white text-white ml-1" size={24} />
-                                                    </motion.div>
-                                                </div>
-                                            </>
-                                        )}
+                                            ) : (
+                                                <>
+                                                    <img
+                                                        src={projects[index].thumbnail}
+                                                        alt={projects[index].title}
+                                                        className="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-105"
+                                                    />
+                                                    {(projects[index].vimeoId || projects[index].videoSrc) && (
+                                                        <div
+                                                            className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer group"
+                                                            onClick={() => setIsPlaying(true)}
+                                                        >
+                                                            <motion.div
+                                                                whileHover={{ scale: 1.1 }}
+                                                                className="w-16 h-16 rounded-full bg-purple-vibrant/20 border border-purple-vibrant flex items-center justify-center backdrop-blur-sm shadow-[0_0_30px_rgba(123,97,255,0.4)]"
+                                                            >
+                                                                <Play className="fill-white text-white ml-1" size={24} />
+                                                            </motion.div>
+                                                        </div>
+                                                    )}
+                                                </>
+                                            )}
+                                        </div>
                                     </div>
 
                                     <div className="w-full md:w-80 p-8 flex flex-col justify-center">
-                                        <span className="font-mono text-[10px] text-purple-vibrant mb-2">0{index + 1} / 03</span>
+                                        <span className="font-mono text-[10px] text-purple-vibrant mb-2">{pad(index + 1)} / {pad(projects.length)}</span>
                                         <h3 className="text-2xl font-sans font-light mb-4">{projects[index].title}</h3>
                                         <p className="font-mono text-sm text-white/40 leading-relaxed mb-8">
-                                            Plataforma digital para innovar, emprender y prototipar soluciones reales.
+                                            {projects[index].description}
                                         </p>
-                                        <button 
-                                            onClick={() => setIsPlaying(true)}
-                                            className="text-xs font-mono tracking-widest uppercase border border-white/10 px-6 py-3 rounded-full hover:bg-white hover:text-black transition-all self-start"
+                                        <motion.button
+                                            onClick={onAgendaClick}
+                                            whileHover={{ scale: 1.03, boxShadow: '0 0 30px rgba(123, 97, 255, 0.4)', backgroundColor: '#8B73FF' }}
+                                            whileTap={{ scale: 0.97 }}
+                                            className="bg-purple-vibrant text-white text-xs font-mono tracking-widest uppercase px-6 py-3 rounded-tr-2xl rounded-bl-2xl shadow-[0_4px_14px_0_rgba(123,97,255,0.39)] self-start transition-colors"
                                         >
-                                            Ver Video
-                                        </button>
+                                            Agendar asesoría
+                                        </motion.button>
                                     </div>
                                 </motion.div>
                             </AnimatePresence>

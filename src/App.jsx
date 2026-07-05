@@ -7,19 +7,23 @@ import Frame from './components/Layout/Frame';
 import Hero from './components/Sections/Hero';
 import LogoCarousel from './components/Sections/LogoCarousel';
 import WhyItierx from './components/Sections/WhyItierx';
+import Differentiator from './components/Sections/Differentiator';
 import WhoWeAre from './components/Sections/WhoWeAre';
 import Contact from './components/Sections/Contact';
 import ContactModal from './components/UI/ContactModal';
+import CalendarModal from './components/UI/CalendarModal';
 import ServiceModal from './components/UI/ServiceModal';
-import SocialModal from './components/UI/SocialModal';
 import PortfolioModal from './components/UI/PortfolioModal';
 import WhatsAppButton from './components/UI/WhatsAppButton';
 
 function App() {
   const [contactData, setContactData] = useState({ isOpen: false, category: '' });
   const [selectedService, setSelectedService] = useState(null);
-  const [isSocialModalOpen, setIsSocialModalOpen] = useState(false);
-  const [isPortfolioModalOpen, setIsPortfolioModalOpen] = useState(false);
+  const [portfolio, setPortfolio] = useState({ isOpen: false, index: 0 });
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+
+  const openCalendar = () => setIsCalendarOpen(true);
+  const openPortfolio = (index = 0) => setPortfolio({ isOpen: true, index });
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -55,17 +59,24 @@ function App() {
     <div className="relative min-h-screen bg-black text-white font-sans selection:bg-purple-vibrant/30">
       <Frame />
       <Sidebar />
-      <Navbar onContactClick={() => setContactData({ isOpen: true, category: '' })} />
+      <Navbar
+        onContactClick={() => setContactData({ isOpen: true, category: '' })}
+        onAgendaClick={openCalendar}
+      />
 
       <main className="pl-0 md:pl-20">
         <Hero
-          onFollowClick={() => setIsSocialModalOpen(true)}
-          onLearnMoreClick={() => setIsPortfolioModalOpen(true)}
+          onAgendaClick={openCalendar}
+          onLearnMoreClick={() => openPortfolio(0)}
         />
         <LogoCarousel />
         <WhyItierx />
+        <Differentiator onAgendaClick={openCalendar} />
         <WhoWeAre onServiceClick={(service) => setSelectedService(service)} />
-        <Contact onContactClick={() => setContactData({ isOpen: true, category: '' })} />
+        <Contact
+          onContactClick={() => setContactData({ isOpen: true, category: '' })}
+          onAgendaClick={openCalendar}
+        />
       </main>
 
       <AnimatePresence>
@@ -86,11 +97,20 @@ function App() {
             onClose={() => setContactData({ ...contactData, isOpen: false })}
           />
         )}
-        {isSocialModalOpen && (
-          <SocialModal key="social-modal" isOpen={true} onClose={() => setIsSocialModalOpen(false)} />
+        {portfolio.isOpen && (
+          <PortfolioModal
+            key="portfolio-modal"
+            isOpen={true}
+            initialIndex={portfolio.index}
+            onClose={() => setPortfolio({ ...portfolio, isOpen: false })}
+            onAgendaClick={() => {
+              setPortfolio((p) => ({ ...p, isOpen: false }));
+              openCalendar();
+            }}
+          />
         )}
-        {isPortfolioModalOpen && (
-          <PortfolioModal key="portfolio-modal" isOpen={true} onClose={() => setIsPortfolioModalOpen(false)} />
+        {isCalendarOpen && (
+          <CalendarModal key="calendar-modal" isOpen={true} onClose={() => setIsCalendarOpen(false)} />
         )}
       </AnimatePresence>
 

@@ -7,14 +7,14 @@ const WhyItierx = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <section id="metodologia" className="relative min-h-screen pt-32 pb-12 md:py-32 px-8 md:px-24 bg-black overflow-hidden">
+        <section id="metodologia" className="relative pt-28 pb-14 md:pt-32 md:pb-16 px-8 md:px-24 bg-black overflow-hidden">
             <div className="max-w-7xl mx-auto flex flex-col items-center">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="text-center mb-24"
+                    className="text-center mb-12"
                 >
                     <span className="font-mono text-purple-vibrant text-xs tracking-widest uppercase mb-4 block">
                         The Advantage
@@ -25,52 +25,42 @@ const WhyItierx = () => {
                     </p>
                 </motion.div>
 
-                {/* Video Preview Section */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
+                {/* Video único (poster liviano, se reproduce al hacer clic) */}
+                <motion.button
+                    initial={{ opacity: 0, scale: 0.96 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="relative w-full aspect-video md:aspect-[21/9] bg-white/5 rounded-2xl border border-purple-vibrant/40 overflow-hidden group shadow-[0_0_80px_rgba(123,97,255,0.15)]"
+                    onClick={() => setIsModalOpen(true)}
+                    aria-label="Reproducir video de ITierX"
+                    className="group relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden border border-purple-vibrant/40 shadow-[0_0_80px_rgba(123,97,255,0.15)]"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10" />
-                    
-                    <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-105"
-                    >
-                        <source src="https://player.vimeo.com/external/517627402.sd.mp4?s=d4520e50160b76927976e104f4476a6b579737e4&profile_id=164&oauth2_token_id=57447761" type="video/mp4" />
-                    </video>
+                    <img
+                        src="/videos/why-itierx-poster.jpg"
+                        alt="Metodología de Impacto ITierX"
+                        loading="lazy"
+                        className="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 z-30 flex items-center justify-center">
-                        <motion.div
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setIsModalOpen(true);
-                            }}
-                            className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-purple-vibrant/20 border border-purple-vibrant flex items-center justify-center cursor-pointer backdrop-blur-sm group/play transition-all hover:bg-purple-vibrant/40 z-40"
-                        >
-                            <Play className="text-white fill-white ml-1 transition-transform group-hover/play:scale-110" size={28} />
-                        </motion.div>
+                    {/* Botón play */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-purple-vibrant/20 border border-purple-vibrant flex items-center justify-center backdrop-blur-sm transition-all group-hover:bg-purple-vibrant/40 group-hover:scale-110">
+                            <Play className="text-white fill-white ml-1" size={28} />
+                        </div>
                     </div>
 
-                    <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-20 select-none pointer-events-none">
-                        <h3 className="text-lg md:text-2xl font-sans mb-1 md:mb-2">Metodología de Impacto</h3>
-                        <p className="font-mono text-[10px] md:text-xs text-white/80 uppercase tracking-widest">
+                    <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 text-left select-none">
+                        <h3 className="text-lg md:text-2xl font-sans mb-1">Metodología de Impacto</h3>
+                        <p className="font-mono text-[10px] md:text-xs text-white/70 uppercase tracking-widest">
                             Sistemas que deben funcionar.
                         </p>
                     </div>
-                </motion.div>
+                </motion.button>
             </div>
 
-            <VideoModal 
-                isOpen={isModalOpen} 
+            <VideoModal
+                isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 vimeoId="1171573189"
                 title="ITIERX"

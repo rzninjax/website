@@ -124,11 +124,10 @@ const ContactModal = ({ isOpen, onClose, category }) => {
                                                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-mono text-sm focus:outline-none focus:border-purple-vibrant transition-colors appearance-none disabled:opacity-50"
                                             >
                                                 <option value="" className="bg-zinc-900">General / Otro</option>
-                                                <option value="Educación" className="bg-zinc-900">Educación</option>
-                                                <option value="Sistemas" className="bg-zinc-900">Sistemas</option>
-                                                <option value="Seguridad" className="bg-zinc-900">Seguridad</option>
-                                                <option value="IA Aplicada" className="bg-zinc-900">IA Aplicada</option>
-                                                <option value="Innovación Real" className="bg-zinc-900">Innovación Real</option>
+                                                <option value="IA soberana" className="bg-zinc-900">IA soberana</option>
+                                                <option value="Ciberseguridad" className="bg-zinc-900">Ciberseguridad</option>
+                                                <option value="Formación" className="bg-zinc-900">Formación</option>
+                                                <option value="Infraestructura y sistemas" className="bg-zinc-900">Infraestructura y sistemas</option>
                                             </select>
                                         </div>
 
