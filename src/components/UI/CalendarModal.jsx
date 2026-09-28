@@ -9,7 +9,7 @@ import { X, CalendarClock } from 'lucide-react';
 //   'itierx/asesoria'  ->  https://cal.com/itierx/asesoria
 // Cal.com genera automáticamente el link de videollamada (Cal Video).
 // Mientras esté vacío ('') se muestra un aviso de "por configurar".
-const CALCOM_LINK = 'contacto-itierx.com/30min';
+const CALCOM_LINK = 'contacto-itierx/30min';
 // ========================================================
 
 const CalendarModal = ({ isOpen, onClose }) => {
