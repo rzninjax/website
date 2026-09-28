@@ -7,9 +7,9 @@ import { X, CalendarClock } from 'lucide-react';
 // ========================================================
 // Pega aquí tu enlace de Cal.com (sin el dominio), por ejemplo:
 //   'itierx/asesoria'  ->  https://cal.com/itierx/asesoria
-// Cal.com genera automáticamente el link de Google Meet / Zoom.
+// Cal.com genera automáticamente el link de videollamada (Cal Video).
 // Mientras esté vacío ('') se muestra un aviso de "por configurar".
-const CALCOM_LINK = 'contacto-itierx.com';
+const CALCOM_LINK = 'contacto-itierx.com/30min';
 // ========================================================
 
 const CalendarModal = ({ isOpen, onClose }) => {
@@ -40,7 +40,7 @@ const CalendarModal = ({ isOpen, onClose }) => {
                             <div>
                                 <h2 className="text-3xl font-sans font-light mb-2">Agenda una asesoría.</h2>
                                 <p className="font-mono text-xs text-white/40 tracking-widest uppercase">
-                                    30 min · Reunión por Zoom / Google Meet · Sin costo
+                                    30 min · Videollamada · Sin costo
                                 </p>
                             </div>
                             <button
@@ -72,7 +72,7 @@ const CalendarModal = ({ isOpen, onClose }) => {
                                         <p className="font-mono text-xs text-white/50 leading-relaxed">
                                             {/* Visible solo hasta pegar el enlace en CALCOM_LINK (CalendarModal.jsx). */}
                                             Pega tu enlace de Cal.com en <span className="text-purple-vibrant">CALCOM_LINK</span> para
-                                            activar la reserva de reuniones por Zoom / Google Meet. Mientras tanto, puedes
+                                            activar la reserva de reuniones por videollamada. Mientras tanto, puedes
                                             escribirnos por el formulario de contacto.
                                         </p>
                                     </div>

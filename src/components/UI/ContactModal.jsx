@@ -126,7 +126,7 @@ const ContactModal = ({ isOpen, onClose, category }) => {
                                                 <option value="" className="bg-zinc-900">General / Otro</option>
                                                 <option value="IA soberana" className="bg-zinc-900">IA soberana</option>
                                                 <option value="Ciberseguridad" className="bg-zinc-900">Ciberseguridad</option>
-                                                <option value="Formación" className="bg-zinc-900">Formación</option>
+                                                <option value="Plataforma de vinculación" className="bg-zinc-900">Plataforma de vinculación</option>
                                                 <option value="Infraestructura y sistemas" className="bg-zinc-900">Infraestructura y sistemas</option>
                                             </select>
                                         </div>

@@ -26,14 +26,14 @@ const WhoWeAre = ({ onServiceClick }) => {
             ]
         },
         {
-            title: "03. Formación: Plataforma Lean Maker",
-            shortTitle: "Formación",
-            category: "Vinculación, Talento y Capacitación",
-            description: "Plataforma Lean Maker: conectamos los desafíos reales de empresas con el talento de la educación superior, con trazabilidad total de la vinculación. Sumamos capacitación y asesoría en tecnología.",
+            title: "03. Plataforma de Vinculación: Lean Maker",
+            shortTitle: "Plataforma de vinculación",
+            category: "Tecnología para la Vinculación con el Medio",
+            description: "Desarrollamos Lean Maker, la plataforma que conecta los desafíos reales de empresas con el talento de la educación superior, con trazabilidad total de la vinculación. Trabajamos junto a las instituciones como partner tecnológico.",
             details: [
                 { label: "Vinculación Trazable (Ley 21.091)", content: "Nuestra plataforma Lean Maker registra la vinculación bidireccional entre empresas e instituciones, generando la trazabilidad que exige la acreditación de la Educación Superior." },
                 { label: "Métricas de Calidad", content: "Generamos reportería avanzada y trazabilidad total del aprendizaje, permitiendo auditorías de calidad precisas y transparentes." },
-                { label: "Capacitación y Asesoría", content: "Formamos y acompañamos a tus equipos en tecnologías específicas mediante capacitación y asesoría en entornos reales, medibles y escalables." }
+                { label: "Implementación y Acompañamiento", content: "Implementamos la plataforma en tu institución y acompañamos a tus equipos en su adopción, integrándonos a tus procesos de vinculación de forma medible y escalable." }
             ],
             link: { label: "lm.itierx.com", url: "https://lm.itierx.com" }
         },
