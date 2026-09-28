@@ -6,7 +6,8 @@ const logos = [
     "HMC",
     "PROKAMBIUM",
     "INGRESA.CL",
-    "AGROGIGANTE"
+    "AGROGIGANTE",
+    "VOENS"
 ];
 
 const LogoCarousel = () => {
